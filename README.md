@@ -6,41 +6,33 @@
 
 (:star2: denotes equal contribution)
 
-## Introduction
+# Introduction
 
  Open-world object detection (OWOD) is a challenging computer vision problem, where the task is to detect a known set of object categories while simultaneously identifying unknown objects. Additionally, the model must incrementally learn new classes that become known in the next training episodes. Distinct from standard object detection, the OWOD setting poses significant challenges for generating quality candidate proposals on potentially unknown objects, separating the unknown objects from the background and detecting diverse unknown objects. Here, we introduce a novel end-to-end transformer-based  framework, OW-DETR, for open-world object detection. The proposed OW-DETR comprises three dedicated components namely, attention-driven pseudo-labeling, novelty classification and objectness scoring  to explicitly address the aforementioned OWOD challenges. Our OW-DETR explicitly encodes multi-scale contextual information, possesses less inductive bias, enables knowledge transfer from known classes to the unknown class and can better discriminate between unknown objects and background. Comprehensive experiments are performed on two benchmarks: MS-COCO and PASCAL VOC. The extensive ablations reveal the merits of our proposed contributions. Further, our model outperforms the recently introduced OWOD approach, ORE, with absolute gains ranging from  $1.8\%$ to $3.3\%$ in terms of unknown recall on MS-COCO. In the case of incremental object detection, OW-DETR outperforms the state-of-the-art for all settings on PASCAL VOC.
- 
+<br>
+
 <p align="center" ><img width='350' src = "https://imgur.com/KXDXiAB.png"></p> 
 
 <br>
 
-<p align="center" ><img width='500' src = "https://imgur.com/cyeMXuh.png"></p>
+<p align="center" ><img width='500' src = "https://imgur.com/cyeMXuh.png"></p> 
 
-## Installation
+
+
+
+
+# Installation
 
 ### Requirements
 
-* Linux, CUDA>=9.2, GCC>=5.4
-  
-* Python>=3.7
+We have trained and tested our models on `Ubuntu 16.0`, `CUDA 10.2`, `GCC 5.4`, `Python 3.7`
 
-    We recommend you to use Anaconda to create a conda environment:
-    ```bash
-    conda create -n owdetr python=3.7 pip
-    ```
-    Then, activate the environment:
-    ```bash
-    conda activate owdetr
-    ```
-    Installation: (change cudatoolkit to your cuda version. For detailed pytorch installation instructions click [here](https://pytorch.org/))
-    ```bash
-    conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=10.2 -c pytorch
-    ```
-  
-* Other requirements
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+conda create -n owdetr python=3.7 pip
+conda activate owdetr
+conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=10.2 -c pytorch
+pip install -r requirements.txt
+```
 
 ### Compiling CUDA operators
 ```bash
@@ -51,19 +43,18 @@ python test.py
 ```
 
 
-## Dataset preparation
+# Dataset & Results
 
-### [OWOD](https://github.com/JosephKJ/OWOD) paper splits 
-
+### OWOD proposed splits
 <br>
 <p align="center" ><img width='500' src = "https://imgur.com/9bzf3DV.png"></p> 
 <br>
 
-The splits are present inside `data/VOC2007/OWOD/ImageSets/` folder. The remaining dataset using this [link](https://drive.google.com/drive/folders/11bJRdZqdtzIxBDkxrx2Jc3AhirqkO0YV)
+The splits are present inside `data/VOC2007/OWOD/ImageSets/` folder. The remaining dataset can be downloaded using this [link](https://drive.google.com/drive/folders/11bJRdZqdtzIxBDkxrx2Jc3AhirqkO0YV)
 
 The files should be organized in the following structure:
 ```
-code_root/
+OW-DETR/
 └── data/
     └── VOC2007/
         └── OWOD/
@@ -72,23 +63,152 @@ code_root/
         	└── Annotations
 ```
 
-### New proposed splits
+### Results
+
+<details>
+    <summary><b>Reported</b></summary>
+    
+<table align="center">
+    <tr>
+        <th> </th>
+        <th align="center" colspan=2>Task1</th>
+        <th align="center" colspan=2>Task2</th>
+        <th align="center" colspan=2>Task3</th>
+        <th align="center" colspan=1>Task4</th>
+    </tr>
+    <tr>
+        <td align="left">Method</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">mAP</td>
+    </tr>
+    <tr>
+        <td align="left">ORE-EBUI</td>
+        <td align="center">4.9</td>
+        <td align="center">56.0</td>
+        <td align="center">2.9</td>
+        <td align="center">39.4</td>
+        <td align="center">3.9</td>
+        <td align="center">29.7</td>
+        <td align="center">25.3</td>
+    </tr>
+    <tr>
+        <td align="left">OW-DETR</td>
+        <td align="center">7.5</td>
+        <td align="center">59.2</td>
+        <td align="center">6.2</td>
+        <td align="center">42.9</td>
+        <td align="center">5.7</td>
+        <td align="center">30.8</td>
+        <td align="center">27.8</td>
+    </tr>
+</table>
+</details>
+
+<details>
+<summary><b>Reproduced</b></summary>
+
+<table align="center">
+    <tr>
+        <th> </th>
+        <th align="center" colspan=3>Task1</th>
+        <th align="center" colspan=3>Task2</th>
+        <th align="center" colspan=3>Task3</th>
+        <th align="center" colspan=2>Task4</th>
+    </tr>
+    <tr>
+        <td align="left">Method</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">URL</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">URL</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">URL</td>
+        <td align="center">mAP</td>
+        <td align="center">URL</td>
+    </tr>
+    <tr>
+        <td align="left">OW-DETR</td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+    </tr>
+</table>
+    
+</details>
+
+<details>
+<summary><b>Improved reproduced</b></summary>
+
+<table align="center">
+    <tr>
+        <th> </th>
+        <th align="center" colspan=3>Task1</th>
+        <th align="center" colspan=3>Task2</th>
+        <th align="center" colspan=3>Task3</th>
+        <th align="center" colspan=2>Task4</th>
+    </tr>
+    <tr>
+        <td align="left">Method</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">URL</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">URL</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">URL</td>
+        <td align="center">mAP</td>
+        <td align="center">URL</td>
+    </tr>
+    <tr>
+        <td align="left">OW-DETR</td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+    </tr>
+</table>
+    
+</details>
+
+
+
+### Our proposed splits
 
 <br>
 <p align="center" ><img width='500' src = "https://imgur.com/RlqbheH.png"></p> 
 <br>
 
-The splits are present inside `data/VOC2007/OWDETR/ImageSets/` folder.
+The splits are present inside `data/VOC2007/OWDETR/ImageSets/` folder. The remaining dataset can be downloaded using this [link]()
 
-1. Please download [COCO 2017 dataset](https://cocodataset.org/) inside `data/` folder.
-2. Transfer images from train2017 and val2017 folders to `data/VOC2007/OWDETR/JPEGImages/`.
-3. Run `coco2voc.py` to convert all coco annotations to VOC format and add them to `data/VOC2007/OWDETR/Annotations/`.
-
-All the above can be skipped if coco dataloader is followed. (Update coming soon..)
 
 The files should be organized in the following structure:
 ```
-code_root/
+OW-DETR/
 └── data/
     └── VOC2007/
         └── OWDETR/
@@ -98,71 +218,78 @@ code_root/
 ```
 
 
-Currently, Dataloader followed for OW-DETR is in VOC format.
+Currently, Dataloader and Evaluator followed for OW-DETR is in VOC format.
 
-## Training
+### Results
 
-#### Training on single node
-
-Command for training OW-DETR which is based on Deformable DETR on 8 GPUs is as following:
-
-```bash
-./run.sh
-```
-
-#### Training on slurm cluster
-
-If you are using slurm cluster, you can simply run the following command to train on 2 node with 8 GPUs each:
-
-```bash
-sbatch run_slurm.sh
-```
-
-## Evaluation
-
-You can get the config file and pretrained model of OW-DETR (the link is in "Results" session), then run following command to evaluate it on test set:
-
-```bash
-<path to config file> --resume <path to pre-trained model> --eval
-```
-
-*Note:*
-For more training and evaluation details please check the [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR) reposistory.
-
-
-## Results
-
-### Reported results
-
+<details>
+    <summary><b>Reported</b></summary>
+    
 <table align="center">
     <tr>
         <th> </th>
         <th align="center" colspan=2>Task1</th>
         <th align="center" colspan=2>Task2</th>
         <th align="center" colspan=2>Task3</th>
+        <th align="center" colspan=1>Task4</th>
+    </tr>
+    <tr>
+        <td align="left">Method</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">U-Recall</td>
+        <td align="center">mAP</td>
+        <td align="center">mAP</td>
+    </tr>
+    <tr>
+        <td align="left">ORE-EBUI</td>
+        <td align="center">1.5</td>
+        <td align="center">61.4</td>
+        <td align="center">3.9</td>
+        <td align="center">40.6</td>
+        <td align="center">3.6</td>
+        <td align="center">33.7</td>
+        <td align="center">31.8</td>
+    </tr>
+    <tr>
+        <td align="left">OW-DETR</td>
+        <td align="center">5.7</td>
+        <td align="center">71.5</td>
+        <td align="center">6.2</td>
+        <td align="center">43.8</td>
+        <td align="center">6.9</td>
+        <td align="center">38.5</td>
+        <td align="center">33.1</td>
+    </tr>
+</table>
+</details>
+
+<details>
+<summary><b>Reproduced</b></summary>
+
+<table align="center">
+    <tr>
+        <th> </th>
+        <th align="center" colspan=3>Task1</th>
+        <th align="center" colspan=3>Task2</th>
+        <th align="center" colspan=3>Task3</th>
         <th align="center" colspan=2>Task4</th>
     </tr>
     <tr>
         <td align="left">Method</td>
-        <td align="center">URecall</td>
+        <td align="center">U-Recall</td>
         <td align="center">mAP</td>
-        <td align="center">URecall</td>
+        <td align="center">URL</td>
+        <td align="center">U-Recall</td>
         <td align="center">mAP</td>
-        <td align="center">URecall</td>
+        <td align="center">URL</td>
+        <td align="center">U-Recall</td>
         <td align="center">mAP</td>
-        <td align="center">URecall</td>
+        <td align="center">URL</td>
         <td align="center">mAP</td>
-    </tr>
-    <tr>
-        <td align="left">ORE-EBUI</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
+        <td align="center">URL</td>
     </tr>
     <tr>
         <td align="left">OW-DETR</td>
@@ -174,11 +301,16 @@ For more training and evaluation details please check the [Deformable DETR](http
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
     </tr>
 </table>
+    
+</details>
 
-
-### Reproduced results
+<details>
+<summary><b>Improved reproduced</b></summary>
 
 <table align="center">
     <tr>
@@ -186,119 +318,71 @@ For more training and evaluation details please check the [Deformable DETR](http
         <th align="center" colspan=3>Task1</th>
         <th align="center" colspan=3>Task2</th>
         <th align="center" colspan=3>Task3</th>
-        <th align="center" colspan=3>Task4</th>
+        <th align="center" colspan=2>Task4</th>
     </tr>
     <tr>
         <td align="left">Method</td>
-        <td align="center">URecall</td>
+        <td align="center">U-Recall</td>
         <td align="center">mAP</td>
         <td align="center">URL</td>
-        <td align="center">URecall</td>
+        <td align="center">U-Recall</td>
         <td align="center">mAP</td>
         <td align="center">URL</td>
-        <td align="center">URecall</td>
+        <td align="center">U-Recall</td>
         <td align="center">mAP</td>
         <td align="center">URL</td>
-        <td align="center">URecall</td>
         <td align="center">mAP</td>
         <td align="center">URL</td>
-    </tr>
-    <tr>
-        <td align="left">ORE-EBUI</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">-</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">-</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">-</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">-</td>
     </tr>
     <tr>
         <td align="left">OW-DETR</td>
         <td align="center"></td>
         <td align="center"></td>
-        <td align="center">URL</td>
         <td align="center"></td>
         <td align="center"></td>
-        <td align="center">URL</td>
         <td align="center"></td>
         <td align="center"></td>
-        <td align="center">URL</td>
         <td align="center"></td>
         <td align="center"></td>
-        <td align="center">URL</td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
     </tr>
 </table>
+    
+</details>
 
-### Improved reproduced results
+# Training
 
-<table align="center">
-    <tr>
-        <th> </th>
-        <th align="center" colspan=3>Task1</th>
-        <th align="center" colspan=3>Task2</th>
-        <th align="center" colspan=3>Task3</th>
-        <th align="center" colspan=3>Task4</th>
-    </tr>
-    <tr>
-        <td align="left">Method</td>
-        <td align="center">URecall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">URecall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">URecall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">URecall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-    </tr>
-    <tr>
-        <td align="left">ORE-EBUI</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">-</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">-</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">-</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">-</td>
-    </tr>
-    <tr>
-        <td align="left">OW-DETR</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">URL</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">URL</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">URL</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center">URL</td>
-    </tr>
-</table>
+#### Training on single node
+
+To train OW-DETR on a single node with 8 GPUS, run
+```bash
+./run.sh
+```
+
+#### Training on slurm cluster
+
+To train OW-DETR on a slurm cluster having 2 nodes with 8 GPUS each, run
+```bash
+sbatch run_slurm.sh
+```
+
+# Evaluation
+
+For reproducing any of the above mentioned results please run the `run_eval.sh` file and add pretrained weights accordingly.
 
 
-## License
+**Note:**
+For more training and evaluation details please check the [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR) reposistory.
+
+
+# License
 
 This repository is released under the Apache 2.0 license as found in the [LICENSE](LICENSE) file.
 
 
-## Citation
+# Citation
 
 If you use OW-DETR, please consider citing:
 
@@ -310,7 +394,7 @@ If you use OW-DETR, please consider citing:
         year={2022}
     }
 
-## Contact
+# Contact
 
 Should you have any question, please contact :e-mail: akshita.sem.iitr@gmail.com
 
