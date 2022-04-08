@@ -65,9 +65,6 @@ OW-DETR/
 
 ### Results
 
-<details>
-    <summary><b>Reported</b></summary>
-    
 <table align="center">
     <tr>
         <th> </th>
@@ -107,93 +104,6 @@ OW-DETR/
         <td align="center">27.8</td>
     </tr>
 </table>
-</details>
-
-<details>
-<summary><b>Reproduced</b></summary>
-
-<table align="center">
-    <tr>
-        <th> </th>
-        <th align="center" colspan=3>Task1</th>
-        <th align="center" colspan=3>Task2</th>
-        <th align="center" colspan=3>Task3</th>
-        <th align="center" colspan=2>Task4</th>
-    </tr>
-    <tr>
-        <td align="left">Method</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-    </tr>
-    <tr>
-        <td align="left">OW-DETR</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-    </tr>
-</table>
-    
-</details>
-
-<details>
-<summary><b>Improved reproduced</b></summary>
-
-<table align="center">
-    <tr>
-        <th> </th>
-        <th align="center" colspan=3>Task1</th>
-        <th align="center" colspan=3>Task2</th>
-        <th align="center" colspan=3>Task3</th>
-        <th align="center" colspan=2>Task4</th>
-    </tr>
-    <tr>
-        <td align="left">Method</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-    </tr>
-    <tr>
-        <td align="left">OW-DETR</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-    </tr>
-</table>
-    
-</details>
 
 
 
@@ -222,9 +132,6 @@ Currently, Dataloader and Evaluator followed for OW-DETR is in VOC format.
 
 ### Results
 
-<details>
-    <summary><b>Reported</b></summary>
-    
 <table align="center">
     <tr>
         <th> </th>
@@ -264,94 +171,8 @@ Currently, Dataloader and Evaluator followed for OW-DETR is in VOC format.
         <td align="center">33.1</td>
     </tr>
 </table>
-</details>
 
-<details>
-<summary><b>Reproduced</b></summary>
-
-<table align="center">
-    <tr>
-        <th> </th>
-        <th align="center" colspan=3>Task1</th>
-        <th align="center" colspan=3>Task2</th>
-        <th align="center" colspan=3>Task3</th>
-        <th align="center" colspan=2>Task4</th>
-    </tr>
-    <tr>
-        <td align="left">Method</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-    </tr>
-    <tr>
-        <td align="left">OW-DETR</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-    </tr>
-</table>
     
-</details>
-
-<details>
-<summary><b>Improved reproduced</b></summary>
-
-<table align="center">
-    <tr>
-        <th> </th>
-        <th align="center" colspan=3>Task1</th>
-        <th align="center" colspan=3>Task2</th>
-        <th align="center" colspan=3>Task3</th>
-        <th align="center" colspan=2>Task4</th>
-    </tr>
-    <tr>
-        <td align="left">Method</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">U-Recall</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-        <td align="center">mAP</td>
-        <td align="center">URL</td>
-    </tr>
-    <tr>
-        <td align="left">OW-DETR</td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-        <td align="center"></td>
-    </tr>
-</table>
-    
-</details>
-
 # Training
 
 #### Training on single node
@@ -401,3 +222,4 @@ Should you have any question, please contact :e-mail: akshita.sem.iitr@gmail.com
 **Acknowledgments:**
 
 OW-DETR builds on previous works code base such as [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR), [Detreg](https://github.com/amirbar/DETReg), and [OWOD](https://github.com/JosephKJ/OWOD). If you found OW-DETR useful please consider citing these works as well.
+
