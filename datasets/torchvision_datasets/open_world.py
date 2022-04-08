@@ -104,7 +104,7 @@ class OWDetection(VisionDataset):
 
             if year == "2007" and image_set == "test":
                 year = "2007-test"
-            valid_sets = ["t1_train_new_split", "t2_train_new_split", "t3_train_new_split", "t4_train_new_split", "t1_train_old_split", "t2_train_old_split", "t3_train_old_split", "t4_train_old_split", "t2_ft_new_split", "t3_ft_new_split", "t4_ft_new_split", "t2_ft_old_split", "t3_ft_old_split", "t4_ft_old_split", "test", "all_task_test"]
+            valid_sets = ["t1_train", "t2_train", "t3_train", "t4_train", "t2_ft", "t3_ft", "t4_ft", "test", "all_task_test"]
             if year == "2007-test":
                 valid_sets.append("test")
 

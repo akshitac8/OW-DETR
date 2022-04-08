@@ -278,7 +278,6 @@ class SetCriterion(nn.Module):
         self.output_dir = args.output_dir
         self.invalid_cls_logits = invalid_cls_logits
         self.unmatched_boxes = args.unmatched_boxes
-        self.rem_additional_bbox = args.rem_additional_bbox
         self.top_unk = args.top_unk
         self.bbox_thresh = args.bbox_thresh
         self.num_seen_classes = args.PREV_INTRODUCED_CLS + args.CUR_INTRODUCED_CLS
@@ -504,23 +503,8 @@ class SetCriterion(nn.Module):
                     else:
                          means_bb[j] = -10e10
 
-                if self.rem_additional_bbox:
-                    h = bb[:,2]-bb[:,0]
-                    w = bb[:,3]-bb[:,1]
-
-                    a_cat_b, counts = torch.cat([torch.where(means_bb>0)[0], torch.where(h>0)[0], torch.where(w>0)[0], torch.where(h/w > self.bbox_thresh)[0], torch.where(w/h > self.bbox_thresh)[0] ]).unique(return_counts=True)
-                    bb_indices = a_cat_b[torch.where(counts.gt(4))[0]]
-
-                    if len(bb_indices) <= self.top_unk:
-                        _, topk_inds =  torch.topk(means_bb, self.top_unk)
-                        topk_inds = torch.as_tensor(topk_inds)
-                    else:
-                        _, topk_inds =  torch.topk(means_bb[bb_indices], self.top_unk)
-                        topk_inds = torch.as_tensor(topk_inds)
-                    
-                else:
-                    _, topk_inds =  torch.topk(means_bb, self.top_unk)
-                    topk_inds = torch.as_tensor(topk_inds)
+                _, topk_inds =  torch.topk(means_bb, self.top_unk)
+                topk_inds = torch.as_tensor(topk_inds)
                     
                 topk_inds = topk_inds.cpu()
 
@@ -585,23 +569,8 @@ class SetCriterion(nn.Module):
                             else:
                                 means_bb[j] = -10e10
 
-                        if self.rem_additional_bbox:
-                            # self.bbox_thresh = 0.5
-                            h = bb[:,2]-bb[:,0]
-                            w = bb[:,3]-bb[:,1]
-
-                            a_cat_b, counts = torch.cat([torch.where(means_bb>0)[0], torch.where(h>0)[0], torch.where(w>0)[0], torch.where(h/w > self.bbox_thresh)[0], torch.where(w/h > self.bbox_thresh)[0] ]).unique(return_counts=True)
-                            bb_indices = a_cat_b[torch.where(counts.gt(4))[0]]
-                            if len(bb_indices) <= self.top_unk:
-                                _, topk_inds =  torch.topk(means_bb, self.top_unk)
-                                topk_inds = torch.as_tensor(topk_inds)
-                            else:
-                                _, topk_inds =  torch.topk(means_bb[bb_indices], self.top_unk)
-                                topk_inds = torch.as_tensor(topk_inds)
-                            
-                        else:
-                            _, topk_inds =  torch.topk(means_bb, self.top_unk)
-                            topk_inds = torch.as_tensor(topk_inds)
+                        _, topk_inds =  torch.topk(means_bb, self.top_unk)
+                        topk_inds = torch.as_tensor(topk_inds)
 
                         topk_inds = topk_inds.cpu()
                         unk_label = torch.as_tensor([self.num_classes-1], device=owod_device)

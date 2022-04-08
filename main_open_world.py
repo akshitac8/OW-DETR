@@ -125,10 +125,9 @@ def get_args_parser():
     parser.add_argument('--invalid_cls_logits', default=False, action='store_true', help='owod setting')
     parser.add_argument('--nc_epoch', default=0, type=int)
     parser.add_argument('--num_classes', default=81, type=int)
-    parser.add_argument('--rem_additional_bbox', default=False, action='store_true')
     parser.add_argument('--backbone', default='resnet50', type=str, help="Name of the convolutional backbone to use")
     parser.add_argument('--dataset', default='owod')
-    parser.add_argument('--data_root', default='../data', type=str)
+    parser.add_argument('--data_root', default='../data/OWDETR', type=str)
     parser.add_argument('--bbox_thresh', default=0.3, type=float)
     return parser
 
