@@ -34,6 +34,10 @@ conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=10
 pip install -r requirements.txt
 ```
 
+### Backbone features
+
+Download the self-supervised backbone from [here](https://dl.fbaipublicfiles.com/dino/dino_resnet50_pretrain/dino_resnet50_pretrain.pth) and add in `models` folder.
+
 ### Compiling CUDA operators
 ```bash
 cd ./models/ops
@@ -219,7 +223,6 @@ For reproducing any of the above mentioned results please run the `run_eval.sh` 
 
 **Note:**
 For more training and evaluation details please check the [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR) reposistory.
-
 
 # License
 
