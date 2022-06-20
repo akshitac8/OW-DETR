@@ -113,8 +113,31 @@ OW-DETR/
 <p align="center" ><img width='500' src = "https://imgur.com/RlqbheH.png"></p> 
 <br>
 
-The splits are present inside `data/VOC2007/OWDETR/ImageSets/` folder. The remaining dataset can be downloaded using this [link]()
+#### Dataset Preparation
 
+The splits are present inside `data/VOC2007/OWDETR/ImageSets/` folder.
+1. Make empty `JPEGImages` and `Annotations` directory.
+```
+mkdir data/VOC2007/OWDETR/JPEGImages/
+mkdir data/VOC2007/OWDETR/Annotations/
+```
+2. Download the COCO Images and Annotations from [coco dataset](https://cocodataset.org/#download).
+3. Unzip train2017 and val2017 folder. The current directory structure should look like:
+```
+OW-DETR/
+└── data/
+    └── coco/
+        ├── annotations/
+        ├── train2017/
+        └── val2017/
+```
+4. Move all images from `train2017/` and `val2017/` to `JPEGImages` folder.
+```
+cd OW-DETR/data
+mv data/coco/train2017/*.jpg data/VOC2007/OWDETR/JPEGImages/.
+mv data/coco/val2017/*.jpg data/VOC2007/OWDETR/JPEGImages/.
+```
+5. Use the code `coco2voc.py` for converting json annotations to xml files.
 
 The files should be organized in the following structure:
 ```
@@ -222,5 +245,4 @@ Should you have any question, please contact :e-mail: akshita.sem.iitr@gmail.com
 **Acknowledgments:**
 
 OW-DETR builds on previous works code base such as [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR), [Detreg](https://github.com/amirbar/DETReg), and [OWOD](https://github.com/JosephKJ/OWOD). If you found OW-DETR useful please consider citing these works as well.
-
 
