@@ -1,6 +1,6 @@
 # OW-DETR: Open-world Detection Transformer (CVPR 2022)
 
-[`Paper`](https://arxiv.org/pdf/2112.01513.pdf) [`Video`](https://www.youtube.com/watch?v=saO8RHCpnaY) [`slides`](https://docs.google.com/presentation/d/1I1OyoRbKqvwB_dSLM8ybSXrB74crPX2a9R9yyWvABDc/edit?usp=sharing) [`summary slide`](https://docs.google.com/presentation/d/1zABTrvkaYlqb7u6xWv1JPIHFdsAyRkAggnmj33kuwsE/edit?usp=sharing)
+[`Paper`](https://openaccess.thecvf.com/content/CVPR2022/papers/Gupta_OW-DETR_Open-World_Detection_Transformer_CVPR_2022_paper.pdf) [`Video`](https://www.youtube.com/watch?v=saO8RHCpnaY) [`slides`](https://docs.google.com/presentation/d/1I1OyoRbKqvwB_dSLM8ybSXrB74crPX2a9R9yyWvABDc/edit?usp=sharing) [`summary slide`](https://docs.google.com/presentation/d/1zABTrvkaYlqb7u6xWv1JPIHFdsAyRkAggnmj33kuwsE/edit?usp=sharing)
 
 #### [Akshita Gupta](https://akshitac8.github.io/)<sup>\*</sup>, [Sanath Narayan](https://sites.google.com/view/sanath-narayan)<sup>\*</sup>, [K J Joseph](https://josephkj.in), [Salman Khan](https://salman-h-khan.github.io/), [Fahad Shahbaz Khan](https://sites.google.com/view/fahadkhans/home), [Mubarak Shah](https://scholar.google.com/citations?user=p8gsO3gAAAAJ&hl=en) ####
 
